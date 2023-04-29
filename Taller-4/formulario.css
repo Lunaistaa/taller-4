@@ -1,0 +1,80 @@
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-size: 16px;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+th {
+  background-color: #ddd;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+select {
+  appearance: none;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+input[type="submit"],
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: #3e8e41;
+}
+
+input[type="submit"]:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ddd;
+}

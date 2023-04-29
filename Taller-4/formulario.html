@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<script src="formulario.js"></script>
+	<link rel="stylesheet" type="text/css" href="formulario.css">
+	<meta charset="UTF-8">
+	<title>Registro de usuarios</title>
+</head>
+<body>
+	<form onsubmit="return validarFormulario()">
+		<table style="border: 1px solid black;">
+			<tr>
+				<th colspan="2" style="text-align:left;border-bottom:1px solid black;">
+					<div style="display: flex; justify-content: space-between;">
+						<h2>Formulario de registro</h2>
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<label for="id_usr">
+						<span>&#x1F511;</span> ID usuario:
+					</label>
+				</td>
+				<td>
+					<input type="text" id="id_usr" name="id_usr" required maxlength="11">
+					<span id="error_id_usr" style="color: red;"></span>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="id_pais"><span style="color: red">&#9670;</span> País:</label></td>
+				<td>
+				  <select id="id_pais" name="id_pais" required>
+					<option value="" disabled selected>Seleccione un país</option>
+					<option value="1">Argentina</option>
+					<option value="2">Brasil</option>
+					<option value="3">Chile</option>
+					<option value="4">Colombia</option>
+					<option value="5">Ecuador</option>
+					<option value="6">México</option>
+					<option value="7">Perú</option>
+					<option value="8">Uruguay</option>
+					<option value="9">Venezuela</option>
+				  </select>
+				  <span id="error_id_pais" style="color: red;"></span>
+				</td>
+			</tr>  	  
+			<tr>
+				<td><label for="nombre"><span style="color: rgb(0, 251, 255)">&#9670;</span> Nombre:</label></td>
+				<td><input type="text" id="nombre" name="nombre" required maxlength="25">
+					<span id="error_nombre" style="color: red;"></span>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="apellido"><span style="color: rgb(0, 251, 255)">&#9670;</span> Apellido:</label></td>
+				<td><input type="text" id="apellido" name="apellido" required maxlength="25"></td>
+			</tr>
+			<tr>
+				<td><label for="direccion"><span style="color: rgb(0, 251, 255)">&#9670;</span> Dirección:</label></td>
+				<td><input type="text" id="direccion" name="direccion" required pattern="^(cll|cra|av|anv|trans)\s.*$" maxlength="25"></td>
+			</tr>
+			<tr>
+				<td><label for="ccusuario"><span style="color: rgb(0, 251, 255)">&#9670;</span> CC usuario:</label></td>
+				<td><input type="text" id="ccusuario" name="ccusuario" required pattern="^[a-zA-Z0-9]{10,20}$"></td>
+			</tr>
+			<tr>
+				<td><label for="ccpaswd"><span style="color: rgb(0, 251, 255)">&#9670;</span> Contraseña:</label></td>
+				<td><input type="password" id="ccpaswd" name="ccpaswd" required pattern="(?=.*\d)(?=.*[A-Z])(?=.*[#%/&]).{15,20}" minlength="15" maxlength="20"></td>
+			</tr>
+			<tr>
+				<td><label for="confirmpaswd"><span style="color: rgb(0, 251, 255)">&#9670;</span> Confirmar contraseña:</label></td>
+				<td><input type="password" id="confirmpaswd" name="confirmpaswd" required pattern="(?=.*\d)(?=.*[A-Z])(?=.*[#%/&]).{15,20}" minlength="15" maxlength="20"></td>
+				<tr>
+					<td><label for="email"><span style="color: rgb(0, 251, 255)">&#9670;</span> Email:</label></td>
+					<td><input type="email" id="email" name="email" required maxlength="120"></td>
+				</tr>
+				<tr>
+					<td><label for="gustos"><span>&#127871;</span> Gustos:</label></td>
+					<td><input type="radio" id="gustos" name="gustos" onclick="mostrarGustos()"> Si</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					  <div style="display: flex; justify-content: space-between;">
+						<button type="submit" style="background-color: rgb(76, 175, 80);color:white;padding:0.5em 1em;border:none;border-radius:0.3em;">
+							<span>&#x2714;</span> Registrar
+							<button type="reset" style="background-color: rgb(244, 67, 54); color:white; padding:0.5em 1em; border:none; border-radius:0.3em;">
+								<span>&#x2716;</span> Limpiar
+							</button>
+					</td>
+				</tr>
+
+			</table>
+			<div id="gustosDiv" style="display: none;">
+				<table style="border: 1px solid black;">
+					<tr>
+						<th colspan="2" style="text-align:left;border-bottom:1px solid black;">
+							<div style="display: flex; justify-content: space-between;">
+								<h2>Registro de gustos</h2>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<td><label for="color"><span>&#127752;</span> Color favorito:</label></td>
+						<td>
+							<select id="estilo" name="estilo">
+								<option value="" disabled selected>Seleccione un color:</option>
+								<option value="Rojo">Rojo</option>
+								<option value="Azul">Azul</option>
+								<option value="Amarillo">Amarillo</option>
+								<option value="Verde">Verde</option>
+								<option value="Morado">Morado</option>
+								<option value="Marrón">Marrón</option>
+								<option value="Gris">Gris</option>
+								<option value="Naranja">Naranja</option>
+								<option value="Negro">Negro</option>
+								<option value="Blanco">Blanco</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="marca"><span>&#127967;</span> Marca de carro favorita:</label></td>
+						<td>
+							<select id="estilo" name="estilo">
+								<option value="" disabled selected>Seleccione una marca:</option>
+								<option value="Aston Martin">Aston Martin</option>
+								<option value="BWM">BWM</option>
+								<option value="Chevrolet">Chevrolet</option>
+								<option value="Dodge">Dodge</option>
+								<option value="Tesla">Tesla</option>
+								<option value="Porsche">Porsche</option>
+								<option value="Mazda">Mazda</option>
+								<option value="Toyota">Toyota</option>
+								<option value="Renault">Renault</option>
+								<option value="Ford">Ford</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="estilo"><span>&#127915;</span> Estilo de carro favorito:</label></td>
+							<td>
+								<select id="estilo" name="estilo">
+									<option value="" disabled selected>Seleccione un estilo:</option>
+									<option value="Deportivo">Deportivo</option>
+									<option value="SUV">SUV</option>
+									<option value="Familiar">Familiar</option>
+									<option value="Camioneta">Camioneta</option>
+									<option value="Compacto">Compacto</option>
+									<option value="Convertible">Convertible</option>
+									<option value="Coupe">Coupe</option>
+									<option value="Hatchback">Hatchback</option>
+									<option value="Sedan">Sedan</option>
+									<option value="Pickup">Pickup</option>
+								</select>
+							</td>
+						</tr>
+					<tr>
+						<td><label for="modelo"><span>&#128663;</span> Modelo de carro favorito:</label></td>
+						<td>
+							<select id="estilo" name="estilo">
+								<option value="" disabled selected>Seleccione una marca:</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="modelo"><span>&#127836;</span> Presupuesto:</label></td>
+						<td>
+							<input type="range" id="rango-precio" name="rango-precio" min="0" max="100000" step="1000" value="50000" oninput="output.value = document.getElementById('rango-precio').value">
+							<output id="output">50,000</output>
+						  </td>						  
+					</tr>
+					<tr>
+						<td colspan="2">
+						  <div style="display: flex; justify-content: space-between;">
+							<button type="submit" style="background-color: rgb(76, 175, 80);color:white;padding:0.5em 1em;border:none;border-radius:0.3em;">
+								<span>&#x2714;</span> Registrar
+								<button type="reset" style="background-color: rgb(244, 67, 54); color:white; padding:0.5em 1em; border:none; border-radius:0.3em;">
+									<span>&#x2716;</span> Limpiar
+								</button>
+						</td>
+					</tr>
+				</table>
+				</form>
+				<script>
+					function mostrarGustos() {
+						var gustosDiv = document.getElementById("gustosDiv");
+						if (gustosDiv.style.display === "none") {
+							gustosDiv.style.display = "block";
+						} else {
+							gustosDiv.style.display = "none";
+						}
+					}
+				</script>
+				</body>
+				</html>
